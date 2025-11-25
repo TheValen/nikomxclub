@@ -75,59 +75,61 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Translations для мов (з SEO-ключами)
-        const translations = {
-            uk: {
-                'title': 'Nikomx – Прокат Пітбайків Київ | Замовлення Пісень | Мото та Музика',
-                'hero-title': 'Nikomx: Адреналін та Емоції!',
-                'hero-desc': 'Обери свій вайб: прокат пітбайків, мото чи ендуро в Києві, або замов персональну пісню для свята.',
-                'moto-btn': 'Хочеш покатати на мото? Тобі сюди! Прокат пітбайків Київ',
-                'song-btn': 'Хочеш замовити пісню? Заходь! Пісня на замовлення',
-                'footer-text': '© 2025 Nikomx.',
-                'footer-copyright': 'Всі права захищено.'
-            },
-            ru: {
-                'title': 'Nikomx – Аренда Питбайков Киев | Заказ Песен | Мото и Музыка',
-                'hero-title': 'Nikomx: Адреналин и Эмоции!',
-                'hero-desc': 'Выбери свой вайб: аренда питбайков, мото или эндуро в Киеве, или закажи персональную песню для праздника.',
-                'moto-btn': 'Хочешь покатать на мото? Тебе сюда! Аренда питбайков Киев',
-                'song-btn': 'Хочешь заказать песню? Заходи! Песня на заказ',
-                'footer-text': '© 2025 Nikomx.',
-                'footer-copyright': 'Все права защищено.'
-            },
-            en: {
-                'title': 'Nikomx – Pitbike Rental Kyiv | Custom Song Orders | Moto & Music',
-                'hero-title': 'Nikomx: Adrenaline & Emotions!',
-                'hero-desc': 'Choose your vibe: pitbike, moto or enduro rental in Kyiv, or order a personalized song for events.',
-                'moto-btn': 'Want to ride moto? Go here! Pitbike Rental Kyiv',
-                'song-btn': 'Want to order a song? Enter! Custom Song Order',
-                'footer-text': '© 2025 Nikomx.',
-                'footer-copyright': 'All rights reserved.'
-            }
-        };
-        function switchLang(lang) {
-            // Зберігаємо мову в localStorage для /songs.html чи bundles.html
-            localStorage.setItem('userLang', lang);
-            document.documentElement.lang = lang;
-            // Оновлюємо title
-            document.title = translations[lang]['title'];
-            // Оновлюємо текст
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                el.textContent = translations[lang][key] || el.textContent;
-            });
-            // Оновлюємо meta description/keywords (динамічно через JS, для SEO)
-            const desc = document.querySelector('meta[name="description"]');
-            const keywords = document.querySelector('meta[name="keywords"]');
-            if (desc) desc.setAttribute('content', translations[lang]['hero-desc'].substring(0, 160) + '...'); // Приблизно
-            if (keywords) keywords.setAttribute('content', 'прокат пітбайков киев, прокат мото киев, пісня на замовлення'); // UA keys, адаптуй
-        }
-        // Ініціалізація: завантажуємо збережену мову або за браузером
-        function initLang() {
-            const savedLang = localStorage.getItem('userLang') || (navigator.language.startsWith('en') ? 'en' : navigator.language.startsWith('ru') ? 'ru' : 'uk');
-            switchLang(savedLang);
-        }
-        window.addEventListener('load', initLang);
+// Translations для мов (з SEO-ключами)
+const translations = {
+    uk: {
+        'title': 'Nikomx – Прокат Пітбайків Київ | Замовлення Пісень | Мото та Музика',
+        'hero-title': 'Nikomx: Адреналін та Емоції!',
+        'hero-desc': 'Обери свій вайб: прокат пітбайків, мото чи ендуро в Києві, або замов персональну пісню для свята.',
+        'moto-btn': 'Хочеш покатати на мото? Тобі сюди! Прокат пітбайків Київ',
+        'song-btn': 'Хочеш замовити пісню? Заходь! Пісня на замовлення',
+        'footer-text': '&copy; 2025 Nikomx Club. Всі права захищено.'  // Об'єднав у один рядок для простоти
+    },
+    ru: {
+        'title': 'Nikomx – Аренда Питбайков Киев | Заказ Песен | Мото и Музыка',
+        'hero-title': 'Nikomx: Адреналин и Эмоции!',
+        'hero-desc': 'Выбери свой вайб: аренда питбайков, мото или эндуро в Киеве, или закажи персональную песню для праздника.',
+        'moto-btn': 'Хочешь покатать на мото? Тебе сюда! Аренда питбайков Киев',
+        'song-btn': 'Хочешь заказать песню? Заходи! Песня на заказ',
+        'footer-text': '&copy; 2025 Nikomx Club. Все права защищено.'  // Об'єднав, з символом ©
+    },
+    en: {
+        'title': 'Nikomx – Pitbike Rental Kyiv | Custom Song Orders | Moto & Music',
+        'hero-title': 'Nikomx: Adrenaline & Emotions!',
+        'hero-desc': 'Choose your vibe: pitbike, moto or enduro rental in Kyiv, or order a personalized song for events.',
+        'moto-btn': 'Want to ride moto? Go here! Pitbike Rental Kyiv',
+        'song-btn': 'Want to order a song? Enter! Custom Song Order',
+        'footer-text': '&copy; 2025 Nikomx Club. All rights reserved.'  // Об'єднав
+    }
+};
+function switchLang(lang) {
+    // Зберігаємо мову в localStorage для /songs.html чи bundles.html
+    localStorage.setItem('userLang', lang);
+    document.documentElement.lang = lang;
+    // Оновлюємо title
+    document.title = translations[lang]['title'];
+    // Оновлюємо текст (textContent для більшості)
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        el.textContent = translations[lang][key] || el.textContent;
+    });
+    // Оновлюємо футер як innerHTML (для &copy; і спана)
+    const footerP = document.querySelector('[data-i18n="footer-text"]');
+    if (footerP) {
+        footerP.innerHTML = translations[lang]['footer-text'];  // Парсить &copy; правильно
+    }
+    // Оновлюємо meta description/keywords (динамічно через JS, для SEO)
+    const desc = document.querySelector('meta[name="description"]');
+    const keywords = document.querySelector('meta[name="keywords"]');
+    if (desc) desc.setAttribute('content', translations[lang]['hero-desc'].substring(0, 160) + '...');
+    if (keywords) keywords.setAttribute('content', 'прокат пітбайков киев, прокат мото киев, пісня на замовлення'); // UA keys, адаптуй
+}
+// Ініціалізація: завантажуємо збережену мову або за браузером
+function initLang() {
+    const savedLang = localStorage.getItem('userLang') || (navigator.language.startsWith('en') ? 'en' : navigator.language.startsWith('ru') ? 'ru' : 'uk');
+    switchLang(savedLang);
+}
+window.addEventListener('load', initLang);
     </script>
 </body>
 </html>
