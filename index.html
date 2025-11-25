@@ -29,15 +29,21 @@
         .navbar { background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
         .nav-link { color: white !important; }
         body.dark { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+        /* Логотип у navbar */
+        .navbar-brand { display: flex; align-items: center; gap: 10px; }
+        .navbar-brand img { height: 30px; width: auto; } /* Розмір лого – адаптуй */
         /* Мобільна оптимізація */
-        @media (max-width: 768px) { .btn-large { font-size: 1.2em; padding: 15px 20px; } .hero h1 { font-size: 2em; } .navbar-brand { font-size: 1.2em; } }
+        @media (max-width: 768px) { .btn-large { font-size: 1.2em; padding: 15px 20px; } .hero h1 { font-size: 2em; } .navbar-brand img { height: 25px; } }
     </style>
 </head>
 <body>
-    <!-- Navbar з перемиканням мов -->
+    <!-- Navbar з перемиканням мов і лого -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">Nikomx</a>
+            <a class="navbar-brand text-white" href="#">
+                <img src="/logo.png" alt="Nikomx Logo"> <!-- Додай свій лого тут, розмір 30-40px -->
+                Nikomx
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,7 +67,7 @@
         <h1 data-i18n="hero-title">Nikomx: Адреналін та Емоції!</h1>
         <p data-i18n="hero-desc">Обери свій вайб: прокат пітбайків, мото чи ендуро в Києві, або замов персональну пісню для свята.</p>
         <a href="https://pitbikedrive.club" class="btn btn-large btn-moto" data-i18n="moto-btn">Хочеш покатати на мото? Тобі сюди! Прокат пітбайків Київ</a>
-        <a href="/songs.html" class="btn btn-large btn-song" data-i18n="song-btn">Хочеш замовити пісню? Заходь! Пісня на замовлення</a> <!-- Замість tunecraft.click – на /songs.html для пісень -->
+        <a href="/songs.html" class="btn btn-large btn-song" data-i18n="song-btn">Хочеш замовити пісню? Заходь! Пісня на замовлення</a>
     </div>
     <!-- Футер -->
     <footer>
