@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifrush: Тематичні бандли | Повний саундтрек для свята</title>
+    <meta name="description" content="Готові музичні бандли для корпоративів, днів народження та весіль. Економія до 60 %, 10–20 унікальних треків, мастеринг, права. Від 2999 грн!">
+    <!-- Те же мета-теги, что на главной -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Те же стили, что на главной (скопируй из index.html весь <style>) */
+        /* Добавь только это для карточек бандлов */
+        .bundle-card { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .bundle-card:hover { transform: translateY(-10px); }
+        .price-old { text-decoration: line-through; color: #aaa; font-size: 1.2em; }
+        .price-new { font-size: 2.5em; font-weight: bold; color: #FF6B9D; }
+        .save-badge { background: #ff4757; color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.9em; }
+        .popular { border: 4px solid #FF6B9D; position: relative; }
+        .popular::before { content: 'НАЙПОПУЛЯРНІШИЙ'; background: #FF6B9D; color: white; padding: 8px 20px; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); border-radius: 50px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <!-- Тот же Navbar, что на главной (скопируй полностью) -->
+    <!-- Только добавь активный класс для Бандлов -->
+    <nav class="navbar navbar-expand-lg fixed-top"> … <a class="nav-link active" href="bundles.html">🎉 Бандлы</a> … </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1 data-i18n="bundles-hero">Превратите свято в незабутній музичний фестиваль!</h1>
+            <p data-i18n="bundles-desc" style="font-size: 1.3em;">Не просто пісні — готовий саундтрек, який змусить гостей сміятися, танцювати та плакати від щастя.<br>Ви отримаєте 10–20 унікальних треків під вашу історію, жарти та імена. Економія до 60 %!</p>
+            <a href="https://t.me/rifrush?start=bundle" class="cta" data-i18n="bundles-cta">Замовити бандл в Telegram</a>
+            <p style="margin-top: 20px; color: #fff;">★ До Нового года — додатково –10 % на будь-який бандл!</p>
+        </div>
+    </section>
+
+    <!-- Бандли (3 карточки — decoy effect) -->
+    <section class="container my-5">
+        <div class="row g-4">
+            <!-- Маленький (приманка) -->
+            <div class="col-md-4">
+                <div class="bundle-card bg-light p-4 text-center">
+                    <h3 data-i18n="bundle1-title">День народження Light</h3>
+                    <p data-i18n="bundle1-desc">10 треків: гімн іменинника, привітання гостей, смішні історії, танцювальний фінал</p>
+                    <p class="price-old">5000 грн</p>
+                    <p class="price-new">2999 грн <span class="save-badge">Економія 40 %</span></p>
+                    <ul class="text-start">
+                        <li>🎤 Тексти пишеш ти або ми</li>
+                        <li>🔊 Мастеринг + права</li>
+                        <li>📁 Папка Google Drive</li>
+                    </ul>
+                    <a href="https://t.me/rifrush?start=bundle_birthday" class="btn btn-outline-primary mt-3">Вибрати</a>
+                </div>
+            </div>
+
+            <!-- Средний — НАЙПОПУЛЯРНІШИЙ (люди выберут его) -->
+            <div class="col-md-4">
+                <div class="bundle-card bg-light p-4 text-center popular">
+                    <h3 data-i18n="bundle2-title">Весілля Love Story</h3>
+                    <p data-i18n="bundle2-desc">15 треків: перший танець, романтика, тости, жарти про родичів, вечірній диско-сет</p>
+                    <p class="price-old">7500 грн</p>
+                    <p class="price-new">4999 грн <span class="save-badge">Економія 33 % + подарунок!</span></p>
+                    <ul class="text-start">
+                        <li>❤️ Персональний slow-dance</li>
+                        <li>🎁 Безкоштовний відео-кліп до першого танцю</li>
+                        <li>🔊 Мастеринг + права</li>
+                        <li>📁 + Spotify плейлист</li>
+                    </ul>
+                    <a href="https://t.me/rifrush?start=bundle_wedding" class="cta mt-3">Замовити зі знижкою</a>
+                </div>
+            </div>
+
+            <!-- Большой -->
+            <div class="col-md-4">
+                <div class="bundle-card bg-light p-4 text-center">
+                    <h3 data-i18n="bundle3-title">Корпоратив 24/7</h3>
+                    <p data-i18n="bundle3-desc">20 треків: гімн компанії, пісні про відділи, жарти про начальника, slow-dance, фінальна вечірка</p>
+                    <p class="price-old">12 000 грн</p>
+                    <p class="price-new">5999 грн <span class="save-badge">Економія 50 %</span></p>
+                    <ul class="text-start">
+                        <li>🏢 Персоналізація під кожного</li>
+                        <li>🎧 DJ-мікс у подарунок</li>
+                        <li>🔊 Мастеринг + права</li>
+                        <li>📁 + QR-код для гостей</li>
+                    </ul>
+                    <a href="https://t.me/rifrush?start=bundle_corp" class="btn btn-outline-primary mt-3">Вибрати</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Приклади звучання (те ж саме, що на головній) -->
+    <section class="portfolio"> … (скопируй секцию portfolio из index.html) … </section>
+
+    <!-- Финальный CTA -->
+    <section class="hero text-center py-5">
+        <div class="container">
+            <h3 data-i18n="bundles-final">Готові зробити ваше свято легендарним?</h3>
+            <p data-i18n="bundles-final-desc">Напишіть у Telegram — отримайте демо-трек з вашого бандлу БЕЗКОШТОВНО за 30 хвилин!</p>
+            <a href="https://t.me/rifrush?start=bundle" class="cta Rifrush" style="font-size: 1.4em;">Замовити бандл прямо зараз</a>
+        </div>
+    </section>
+
+    <!-- Footer такой же, как на главной -->
+
+    <!-- Тот же скрипт переводов (добавь новые ключи в translations) -->
+    <script>
+        // Добавь в объект translations (uk, ru, en) новые ключи:
+        // nav-bundles, teaser-title, teaser-desc, teaser-btn, bundles-hero, bundles-desc, bundles-cta, 
+        // bundle1-title, bundle1-desc, bundle2-title, bundle2-desc, bundle3-title, bundle3-desc,
+        // bundles-final, bundles-final-desc
+        // Я подготовил все переводы — просто вставь в свой скрипт (скину ниже отдельно, если нужно).
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
