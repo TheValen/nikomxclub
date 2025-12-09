@@ -39,16 +39,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-primary: #0f0f0f; --bg-secondary: #1a1a1a; --text-primary: #ffffff; --accent: #FF6B6B; --accent-hover: #4ECDC4; --btn-bg: linear-gradient(45deg, #FF6B6B, #4ECDC4); --navbar-bg: #0f0f0f; --navbar-text: #ffffff; }
-        body.light { --bg-primary: #ffffff; --bg-secondary: #f0f0f0; --text-primary: #333333; --accent: #4ECDC4; --accent-hover: #FF6B6B; --navbar-bg: #ffffff; --navbar-text: #333333; }
+        :root { --bg-primary: #ffffff; --bg-secondary: #f0f0f0; --text-primary: #333333; --accent: #4ECDC4; --accent-hover: #FF6B6B; --btn-bg: linear-gradient(45deg, #FF6B6B, #4ECDC4); --navbar-bg: #ffffff; --navbar-text: #333333; }
+        body.dark { --bg-primary: #0f0f0f; --bg-secondary: #1a1a1a; --text-primary: #ffffff; --accent: #FF6B6B; --accent-hover: #4ECDC4; --navbar-bg: #0f0f0f; --navbar-text: #ffffff; }
         body { font-family: 'Poppins', sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: all 0.3s; }
-        .navbar { background: var(--navbar-bg) !important; border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
-        body.light .navbar { background: #ffffff !important; border-bottom: 1px solid rgba(0,0,0,0.1); }
-        .navbar-brand img { max-height: 40px; filter: brightness(0) invert(1); }
-        body.light .navbar-brand img { filter: none; }
+        .navbar { background: var(--navbar-bg) !important; border-bottom: 1px solid rgba(0,0,0,0.1); transition: all 0.3s; }
+        body.dark .navbar { background: #0f0f0f !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .navbar-brand img { max-height: 40px; }
+        body.dark .navbar-brand img { filter: brightness(0) invert(1); }
         .nav-link { color: var(--navbar-text) !important; }
         .hero { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: #0f0f0f; padding: 100px 20px 60px; text-align: center; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(0,0,0,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(0,0,0,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); }
+        body.dark .hero::before { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); }
         .hero h1 { font-size: 3.5em; margin-bottom: 20px; animation: slideInUp 1s ease-out; font-weight: 700; }
         .cta { background: var(--btn-bg); border: none; padding: 15px 40px; font-size: 1.2em; color: white; border-radius: 50px; cursor: pointer; transition: all 0.3s; display: inline-block; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); color: white; }
@@ -56,45 +57,64 @@
         section { padding: 80px 20px; }
         .icon { font-size: 2.5em; margin-bottom: 15px; }
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .step { text-align: center; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.05); transition: transform 0.3s; }
+        .step { text-align: center; padding: 20px; border-radius: 15px; background: rgba(0,0,0,0.05); transition: transform 0.3s; }
+        body.dark .step { background: rgba(255,255,255,0.05); }
         .step:hover { transform: translateY(-5px); }
         @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         [data-i18n] { transition: opacity 0.3s; }
         .navbar-nav .nav-link { margin-left: 15px; border-radius: 20px; padding: 5px 10px; transition: background 0.3s; }
-        .navbar-nav .nav-link:hover { background: rgba(255,255,255,0.1); }
+        .navbar-nav .nav-link:hover { background: rgba(0,0,0,0.1); }
+        body.dark .navbar-nav .nav-link:hover { background: rgba(255,255,255,0.1); }
         .adv-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .adv-list li { font-size: 1.2em; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px; list-style: none; }
+        .adv-list li { font-size: 1.2em; padding: 15px; background: rgba(0,0,0,0.05); border-radius: 10px; list-style: none; }
+        body.dark .adv-list li { background: rgba(255,255,255,0.05); }
         .bundles-section { background: var(--bg-secondary); }
-        body.light .bundles-section { background: #f8f9fa; }
-        .bundle-card { background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1)); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 30px; text-align: center; transition: all 0.3s; }
+        body.dark .bundles-section { background: #1a1a1a; }
+        .bundle-card { background: linear-gradient(135deg, rgba(78,205,196,0.1), rgba(255,107,107,0.1)); border: 1px solid rgba(0,0,0,0.1); border-radius: 20px; padding: 30px; text-align: center; transition: all 0.3s; }
+        body.dark .bundle-card { background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1)); border: 1px solid rgba(255,255,255,0.2); }
         .bundle-card:hover { transform: scale(1.02); border-color: var(--accent); }
         .bundle-card h3 { color: var(--accent); }
         .bundle-price { font-size: 2em; font-weight: 700; color: var(--accent); }
         .portfolio { background: var(--bg-secondary); }
-        body.light .portfolio { background: #f8f9fa; }
+        body.dark .portfolio { background: #1a1a1a; }
         .video-card { margin-bottom: 30px; text-align: center; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        body.dark .video-card { box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
         .video-card h4 { margin: 15px 0; color: var(--accent); }
         .video-card iframe { width: 100%; height: 250px; border-radius: 0 0 15px 15px; }
-        footer { background: var(--bg-secondary); padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
-        body.light footer { background: #f0f0f0; border-top: 1px solid rgba(0,0,0,0.1); color: #333; }
+        footer { background: var(--bg-secondary); padding: 30px 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.1); }
+        body.dark footer { background: #1a1a1a; border-top: 1px solid rgba(255,255,255,0.1); }
         .phone-btn { background: #25D366; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 500; transition: background 0.3s; }
         .phone-btn:hover { background: #128C7E; color: white; }
-        /* Темна тема базова, світла як опція */
-        body.light .bg-light {
+        /* Секції bg-light для світлої теми */
+        .bg-light {
             background-color: #f8f9fa !important;
             color: #333 !important;
         }
-        body.light .bg-light h2, body.light .bg-light h3, body.light .bg-light p, body.light .bg-light .step p {
+        .bg-light h2, .bg-light h3, .bg-light p, .bg-light .step p {
             color: #333 !important;
         }
-        body.light .bg-light .icon {
+        .bg-light .icon {
             color: var(--accent) !important;
         }
-        body.light .step { background: rgba(0,0,0,0.05); }
-        body.light .adv-list li { background: rgba(0,0,0,0.05); }
+        /* Для темної теми */
+        body.dark .bg-light {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+        body.dark .bg-light h2,
+        body.dark .bg-light h3,
+        body.dark .bg-light p,
+        body.dark .bg-light .step p {
+            color: var(--text-primary) !important;
+        }
+        body.dark .bg-light .icon {
+            color: var(--accent) !important;
+        }
+        body.dark .step { background: rgba(255,255,255,0.05); }
+        body.dark .adv-list li { background: rgba(255,255,255,0.05); }
     </style>
 </head>
-<body>
+<body class="light"> <!-- За замовчуванням світла тема -->
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -116,7 +136,7 @@
                         <button class="nav-link btn btn-link" onclick="switchLang('en')">🇺🇸 EN</button>
                     </li>
                     <li class="nav-item">
-                        <button class="nav-link btn btn-link theme-toggle" onclick="toggleTheme()">☀️</button>
+                        <button class="nav-link btn btn-link theme-toggle" onclick="toggleTheme()">🌙</button>
                     </li>
                 </ul>
             </div>
@@ -206,7 +226,7 @@
                         <p data-i18n="bundle1-desc">Один унікальний трек на замовлення з вашими словами та стилем. Економія: повні права + мастеринг.</p>
                         <div class="bundle-price" data-i18n="bundle1-price">500 грн</div>
                         <small data-i18n="bundle1-note">1 трек, 1-2 дні</small>
-                        <a href="https://t.me/rifrush?start=bundle1" class="cta mt-3" style="display: inline-block;">Замовити</a>
+                        <a href="https://t.me/rifrush?start=bundle1" class="cta mt-3" target="_blank" rel="noopener noreferrer">Замовити</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -215,7 +235,7 @@
                         <p data-i18n="bundle2-desc">10 персоналізованих треків для команди — ідеально для мотивації та фану. Економія 1500 грн. Доказ: 30+ компаній повторили!</p>
                         <div class="bundle-price" data-i18n="bundle2-price">2999 грн</div>
                         <small data-i18n="bundle2-note">10 треків, 2-3 дні</small>
-                        <a href="https://t.me/rifrush?start=bundle2" class="cta mt-3" style="display: inline-block;">Замовити</a>
+                        <a href="https://t.me/rifrush?start=bundle2" class="cta mt-3" target="_blank" rel="noopener noreferrer">Замовити</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -224,7 +244,7 @@
                         <p data-i18n="bundle3-desc">5 треків + мікс + відео-інтро для повного саундтреку події. Емоційно: уявіть загальний вайб!</p>
                         <div class="bundle-price" data-i18n="bundle3-price">1499 грн</div>
                         <small data-i18n="bundle3-note">5+ треків, 2 дні</small>
-                        <a href="https://t.me/rifrush?start=bundle3" class="cta mt-3" style="display: inline-block;">Замовити</a>
+                        <a href="https://t.me/rifrush?start=bundle3" class="cta mt-3" target="_blank" rel="noopener noreferrer">Замовити</a>
                     </div>
                 </div>
             </div>
@@ -265,7 +285,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p data-i18n="footer-text">Зв'яжіться з нами: <a href="tel:+380953251690" class="phone-btn">095 325 16 90</a> | <a href="https://t.me/rifrush" target="_blank" rel="noopener noreferrer">Telegram: @rifrush</a> | © 2025 Nikomx Club. Всі права захищено.</p>
+            <p id="footer-p">Зв'яжіться з нами: <a href="tel:+380953251690" class="phone-btn">095 325 16 90</a> | <a href="https://t.me/rifrush" target="_blank" rel="noopener noreferrer">Telegram: @rifrush</a> | © 2025 Nikomx Club. Всі права захищено.</p>
         </div>
     </footer>
     <script>
@@ -323,7 +343,8 @@
                 'final-cta': 'Не відкладайте вайб – напишіть зараз і отримайте демо за 5 хв! 100+ подій не помилилися.',
                 'final-cta-btn': 'Почати замовлення в Telegram',
                 'style-note': 'Треки створюються у позитивному, енергійному та надихаючому стилі. Нецензурна лексика та агресивний зміст не використовуються.',
-                'footer-text': 'Зв\'яжіться з нами: '
+                'footer-text': 'Зв\'яжіться з нами: ',
+                'footer-copyright': '© 2025 Nikomx Club. Всі права захищено.'
             },
             ru: {
                 'hero-title': 'Представьте: адреналиновый вайб на корпоративе, когда команда услышит трек с их шутками и вашим вайбом...',
@@ -371,7 +392,8 @@
                 'final-cta': 'Не откладывайте вайб – напишите сейчас и получите демо за 5 мин! 100+ событий не ошиблись.',
                 'final-cta-btn': 'Начать заказ в Telegram',
                 'style-note': 'Треки создаются в позитивном, энергичном и вдохновляющем стиле. Нецензурная лексика и агрессивный контент не используются.',
-                'footer-text': 'Свяжитесь с нами: '
+                'footer-text': 'Свяжитесь с нами: ',
+                'footer-copyright': '© 2025 Nikomx Club. Все права защищено.'
             },
             en: {
                 'hero-title': 'Imagine: Adrenaline vibe at the corporate, when the team hears a track with their jokes and your vibe...',
@@ -419,7 +441,8 @@
                 'final-cta': 'Don\'t delay vibe – write now and get demo in 5 min! 100+ events didn\'t make a mistake.',
                 'final-cta-btn': 'Start Order in Telegram',
                 'style-note': 'Tracks are created in a positive, energetic, and inspiring style. No profanity or aggressive content is used.',
-                'footer-text': 'Contact us: '
+                'footer-text': 'Contact us: ',
+                'footer-copyright': '© 2025 Nikomx Club. All rights reserved.'
             }
         };
         function switchLang(lang) {
@@ -427,7 +450,7 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
                 if (translations[lang][key]) {
-                    if (el.tagName === 'P' || el.tagName === 'H3' || el.tagName === 'LI' || el.tagName === 'H4' || el.tagName === 'SMALL' || el.tagName === 'DIV') {
+                    if (el.tagName === 'P' || el.tagName === 'H3' || el.tagName === 'LI' || el.tagName === 'H4' || el.tagName === 'SMALL' || el.tagName === 'DIV' || el.tagName === 'H2' || el.tagName === 'H1') {
                         el.innerHTML = translations[lang][key];
                     } else {
                         el.textContent = translations[lang][key];
@@ -441,16 +464,18 @@
                     iframes[index].title = translations[lang][`ex${index + 1}-title`];
                 }
             });
-            const footer = document.querySelector('[data-i18n="footer-text"]');
-            if (footer) {
-                footer.innerHTML = translations[lang]['footer-text'] + '<a href="tel:+380953251690" class="phone-btn">095 325 16 90</a> | <a href="https://t.me/rifrush" target="_blank" rel="noopener noreferrer">Telegram: @rifrush</a> | © 2025 Nikomx Club. Всі права захищено.';
+            // Обновляем футер полностью
+            const footerP = document.getElementById('footer-p');
+            if (footerP) {
+                const fullFooterHtml = translations[lang]['footer-text'] + '<a href="tel:+380953251690" class="phone-btn">095 325 16 90</a> | <a href="https://t.me/rifrush" target="_blank" rel="noopener noreferrer">Telegram: @rifrush</a> | ' + translations[lang]['footer-copyright'];
+                footerP.innerHTML = fullFooterHtml;
             }
         }
         // Theme toggle
         function toggleTheme() {
-            document.body.classList.toggle('light');
+            document.body.classList.toggle('dark');
             const btn = document.querySelector('.theme-toggle');
-            btn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+            btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
         }
         // Инициализация: определяем язык пользователя по настройкам браузера
         function initLang() {
